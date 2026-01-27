@@ -1,0 +1,115 @@
+.container {
+    padding: 80px 20px 120px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.title {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    margin-bottom: 24px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-charcoal);
+}
+
+.subtitle {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-charcoal);
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 60px;
+    counter-reset: step-counter;
+}
+
+.step {
+    text-align: center;
+    position: relative;
+}
+
+.stepNumber {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    color: var(--color-beige);
+    margin-bottom: -30px;
+    /* Overlap effect */
+    position: relative;
+    z-index: -1;
+    font-weight: 700;
+    opacity: 0.5;
+}
+
+.stepTitle {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+    color: var(--color-charcoal);
+    letter-spacing: 0.05em;
+}
+
+.stepDesc {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--color-charcoal);
+    opacity: 0.7;
+}
+
+.ctaSection {
+    text-align: center;
+    margin-top: 120px;
+    padding: 80px;
+    background-color: #fafaf5;
+    /* Very light beige */
+}
+
+.ctaText {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: var(--color-charcoal);
+}
+
+.ctaButton {
+    display: inline-block;
+    padding: 18px 48px;
+    background-color: var(--color-charcoal);
+    color: var(--color-white);
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.ctaButton:hover {
+    background-color: transparent;
+    color: var(--color-charcoal);
+    outline: 1px solid var(--color-charcoal);
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
+        gap: 80px;
+    }
+}

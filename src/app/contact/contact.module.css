@@ -1,0 +1,140 @@
+.container {
+    padding: 80px 20px 120px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.title {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    margin-bottom: 16px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-charcoal);
+}
+
+.subtitle {
+    font-family: var(--font-body);
+    color: var(--color-charcoal);
+    opacity: 0.7;
+    font-size: 1rem;
+}
+
+.contentWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+}
+
+.formSection {
+    background-color: var(--color-white);
+    padding: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+    opacity: 0.6;
+}
+
+.input,
+.textarea {
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    margin-bottom: 32px;
+    background: transparent;
+    transition: border-color 0.3s;
+}
+
+.input:focus,
+.textarea:focus {
+    outline: none;
+    border-bottom-color: var(--color-charcoal);
+}
+
+.textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.submitButton {
+    display: inline-block;
+    padding: 16px 40px;
+    background-color: var(--color-charcoal);
+    color: var(--color-white);
+    border: none;
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    width: 100%;
+}
+
+.submitButton:hover {
+    opacity: 0.9;
+}
+
+.infoSection {
+    padding-top: 40px;
+}
+
+.infoBlock {
+    margin-bottom: 60px;
+}
+
+.infoTitle {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    margin-bottom: 24px;
+    color: var(--color-charcoal);
+    letter-spacing: 0.05em;
+}
+
+.socialLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.socialLink {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--color-charcoal);
+    opacity: 0.8;
+    transition: opacity 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.socialLink:hover {
+    opacity: 1;
+}
+
+@media (max-width: 900px) {
+    .contentWrapper {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    .formSection {
+        padding: 30px;
+    }
+}
