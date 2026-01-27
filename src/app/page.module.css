@@ -8,7 +8,7 @@
   text-align: center;
   background-color: var(--color-beige);
   /* Elegant, editorial fashion placeholder */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2020&auto=format&fit=crop');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/images/hero/yellow-dress-hero.jpg');
   background-size: cover;
   background-position: center;
   color: var(--color-white);
