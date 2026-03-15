@@ -2,55 +2,42 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import styles from './page.module.css';
+import { client } from '@/sanity/lib/client';
+import { urlFor } from '@/sanity/lib/image';
 
-// Mock data store - in a real app this would be a database fetch
-const products: Record<string, { name: string; category: string; description: string; fabric: string; fit: string; image: string; price: string }> = {
-    'silk-wrap': {
-        name: 'The Silk Wrap',
-        category: 'Dresses',
-        description: 'A fluid silhouette that drapes effortlessly across the body. Crafted from 100% organic sand-washed silk, this piece is designed to move with you. Features a bias cut and adjustable waist tie for a personalized fit.',
-        fabric: '100% Organic Silk',
-        fit: 'Relaxed fit, true to size',
-        image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=1966&auto=format&fit=crop',
-        price: 'Made to Order'
-    },
-    'linen-trousers': {
-        name: 'Linen Wide Trousers',
-        category: 'Bottoms',
-        description: 'High-waisted trousers with a wide, flowing leg. Made from heavy-weight European linen ensuring breathability and structure. Finished with deep pockets and a concealed side zip.',
-        fabric: '100% European Linen',
-        fit: 'High-waisted, wide leg',
-        image: 'https://images.unsplash.com/photo-1584273143981-41c073dfe8f8?q=80&w=1966&auto=format&fit=crop',
-        price: 'Made to Order'
-    },
-    'structured-blazer': {
-        name: 'Structured Blazer',
-        category: 'Outerwear',
-        description: 'A modern take on the classic blazer. Sharp shoulders meet a relaxed waist for a silhouette that commands attention without restriction.',
-        fabric: 'Wool Blend',
-        fit: 'Oversized',
-        image: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=1936&auto=format&fit=crop',
-        price: 'Made to Order'
-    },
-    // Fallback for other IDs from the grid
-    'default': {
-        name: 'Signature Archive Piece',
-        category: 'Archive',
-        description: 'A unique design from our archives. This piece exemplifies the Airla commitment to timeless design and superior craftsmanship.',
-        fabric: 'Premium Blend',
-        fit: 'Custom Tailored',
-        image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2020&auto=format&fit=crop',
-        price: 'Inquire for Pricing'
-    }
-};
+// Tell Next.js to always fetch the latest data from CMS
+export const revalidate = 0;
 
 type Props = {
+    // Note: Our [id] dynamic route is actually matching the slug from Sanity now
     params: Promise<{ id: string }>;
 };
 
+// Reusable fetch function for the product data
+async function getProduct(slug: string) {
+    const query = `*[_type == "product" && slug.current == $slug][0] {
+        name,
+        category,
+        description,
+        fabric,
+        fit,
+        price,
+        image
+    }`;
+    return await client.fetch(query, { slug });
+}
+
 export async function generateMetadata({ params }: Props) {
     const { id } = await params;
-    const product = products[id] || products['default'];
+    const product = await getProduct(id);
+
+    if (!product) {
+        return {
+            title: 'Product Not Found | Airla',
+            description: 'The requested product could not be found.',
+        };
+    }
+
     return {
         title: `${product.name} | Airla`,
         description: product.description,
@@ -59,7 +46,7 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function ProductPage({ params }: Props) {
     const { id } = await params;
-    const product = products[id] || products['default'];
+    const product = await getProduct(id);
 
     if (!product) {
         notFound();
@@ -69,7 +56,7 @@ export default async function ProductPage({ params }: Props) {
         <div className={styles.container}>
             <div className={styles.imageSection}>
                 <Image
-                    src={product.image}
+                    src={product.image ? urlFor(product.image)!.url() : '/images/placeholder.png'}
                     alt={product.name}
                     fill
                     className={styles.productImage}
@@ -93,11 +80,11 @@ export default async function ProductPage({ params }: Props) {
                 <div className={styles.meta}>
                     <div className={styles.metaItem}>
                         <span className={styles.metaLabel}>Fabric</span>
-                        <span className={styles.metaValue}>{product.fabric}</span>
+                        <span className={styles.metaValue}>{product.fabric || 'Unknown'}</span>
                     </div>
                     <div className={styles.metaItem}>
                         <span className={styles.metaLabel}>Fit</span>
-                        <span className={styles.metaValue}>{product.fit}</span>
+                        <span className={styles.metaValue}>{product.fit || 'Unknown'}</span>
                     </div>
                 </div>
 

@@ -1,0 +1,168 @@
+<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   meta charset="UTF-8">
+   meta name="viewport" content="width=device-width, initial-scale=1.0">
+   title>Luxury Threads - Timeless Elegancetitle>
+   link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+   link rel="stylesheet" href="styles.css">
+head>
+<body>
+   header class="site-header">
+       div class="container">
+           h1 class="logo">LUXURY THREADSh1>
+           nav class="main-nav">
+               ul>
+                   lia href="#">Homeali>
+                   lia href="#">Collectionsali>
+                   lia href="#">New Arrivalsali>
+                   lia href="#">Aboutali>
+                   lia href="#">Contactali>
+               ul>
+           nav>
+       div>
+   header>
+
+   section class="hero-section">
+       div class="hero-content">
+           h1>Timeless Elegance, Modern Luxuryh1>
+           p>Discover our curated collection of handcrafted garments designed for the discerning individualp>
+           a href="#" class="cta-button">Shop Nowa>
+       div>
+   section>
+
+   section class="collections">
+       div class="container">
+           h2 class="section-title">Our Collectionsh2>
+           div class="collection-grid">
+               div class="collection-card">
+                   img src="formalwear.jpg" alt="Formal Wear">
+                   h3>Evening Eleganceh3>
+                   p>Hand-tailored evening gowns with exquisite detailingp>
+               div>
+                <!-- More collection cards -->
+           div>
+       div>
+   section>
+
+   footer class="site-footer">
+       div class="container">
+           p>&copy; 2023 Luxury Threads. All rights reservedp>
+           div class="social-links">
+               a href="#">Instagrama>
+               a href="#">Facebooka>
+               a href="#">Pinteresta>
+           div>
+       div>
+   footer>
+body>
+</html>
+```
+
+4. **CSS Implementation** (styles.css):
+```css
+:root {
+    --primary-beige: #F5F0E6;
+    --accent-gold: #D4AF37;
+    --text-dark: #333333;
+    --background-dark: #2D3446;
+}
+
+body {
+    font-family: 'Merriweather', serif;
+    color: var(--text-dark);
+    background-color: var(--primary-beige);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.site-header {
+    background: var(--accent-gold);
+    color: white;
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+}
+
+.main-nav ul {
+    display: flex;
+    justify-content: flex-end;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.hero-section {
+    background: url('luxury-texture.jpg') no-repeat center center/cover;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.cta-button {
+    background: var(--accent-gold);
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.collections {
+    padding: 80px 0;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    color: var(--background-dark);
+}
+
+.collection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.collection-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.collection-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+footer {
+    background: var(--background-dark);
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+}
