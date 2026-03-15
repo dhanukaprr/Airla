@@ -37,7 +37,8 @@
     text-transform: uppercase;
     letter-spacing: 0.1em;
     margin-bottom: 40px;
-    opacity: 0.5;
+    opacity: 0.8;
+    color: var(--color-charcoal);
 }
 
 .title {
@@ -53,7 +54,7 @@
     font-size: 1.2rem;
     margin-bottom: 40px;
     color: var(--color-charcoal);
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 .description {
@@ -78,7 +79,8 @@
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    opacity: 0.5;
+    opacity: 0.8;
+    color: var(--color-charcoal);
     display: block;
     margin-bottom: 4px;
 }
@@ -86,6 +88,7 @@
 .metaValue {
     font-family: var(--font-heading);
     font-size: 1rem;
+    color: var(--color-charcoal);
 }
 
 .actionButton {
